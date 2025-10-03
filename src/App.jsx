@@ -1,18 +1,21 @@
-
 import './App.css'
-import ProductCard from './components/productCard'
+
 
 function App() {
   
 
   return (
-    <>
-      <ProductCard name="Labrador puppy" price="75,000.00" image="https://picsum.photos/id/237/200/300"/>
-      <ProductCard name="Labrador puppy" price="75,000.00" image="https://picsum.photos/id/237/200/300"/>
-      <ProductCard name="Labrador puppy" price="75,000.00" image="https://picsum.photos/id/237/200/300"/>
-      
-    </>
-  );
+    <div className="border w-[600px] h-[600px] bg-gray-500 relative">
+      <div className='w-[500px] h-[500px] bg-yellow-100 flex flex-col items-center justify-center'>
+        <div className='w-[100px] h-[100px] bg-blue-600'></div>
+        <div className='w-[100px] h-[100px] bg-red-600 fixed left-[550px] top-[550px]'></div>
+        <div className='w-[100px] h-[100px] bg-green-600'></div>
+        <div className='w-[100px] h-[100px] absolute right-[100px] bottom-[100px] bg-pink-600'></div>
+        {/* <div className='w-[100px] h-[100px] bg-purple-600'></div> */}
+        </div>
+
+    </div>
+  )
 }
 
 export default App
