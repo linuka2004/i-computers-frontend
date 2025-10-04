@@ -1,0 +1,10 @@
+import Header from "../components/header";
+
+export default function HomePage() {
+    return (
+        <div className="w-full h-full">
+          <Header/>
+          <h1>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias pariatur dolore deleniti exercitationem dolorum repellendus id praesentium fuga, deserunt, expedita consequatur sint totam maxime officia consequuntur possimus, tempora culpa quisquam laboriosam. Accusantium dolores assumenda dignissimos quam ad rerum est totam veritatis exercitationem, officia ipsum nostrum laudantium doloremque. Fuga, aspernatur dicta eaque incidunt corporis tempore veniam architecto facilis hic unde odio distinctio soluta laudantium ut alias dolor quaerat ad consectetur sunt aperiam labore rem impedit dolorum vel. Blanditiis nostrum voluptate beatae corrupti a veniam consequatur, molestias fugit? Doloremque voluptatibus eos sed laboriosam aut totam vel id libero ipsam, distinctio debitis, dignissimos facilis fugiat sit earum eveniet delectus quod adipisci quos. Facilis suscipit veniam labore. Hic aspernatur et officia modi voluptatem vel delectus. Rem reprehenderit corporis quasi magnam culpa, facilis dolor quibusdam placeat enim minus blanditiis, nemo sint ex assumenda et doloribus, animi voluptatibus suscipit quis voluptatem incidunt temporibus excepturi? Magnam ipsam, cum placeat soluta eos exercitationem qui, quasi illum atque quidem nihil amet facere voluptatum ab ratione perspiciatis numquam maiores quis iure explicabo officia! Nihil culpa distinctio vitae repudiandae dolore dolorum deserunt accusamus soluta consequatur velit, eveniet, ad minus iusto? Quod enim, alias natus temporibus minus suscipit soluta facere in placeat ipsum voluptatibus sequi, maxime quia iure quis fugit ipsam quibusdam inventore? Vero, laudantium. Assumenda, doloribus! Voluptatum, perferendis earum blanditiis eveniet repellat reprehenderit quia iusto! Explicabo dolorem magnam maiores pariatur maxime delectus ipsum a adipisci accusamus laboriosam repellendus consectetur eaque ratione incidunt inventore doloremque totam commodi, debitis illo nemo et iusto.</h1>
+        </div>
+    )
+}
