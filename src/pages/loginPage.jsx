@@ -8,7 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 export default function LoginPage() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-    const navigate = useNavigate()
+    const navigate = useNavigate() // to navigate programmatically
 
 	async function login() {
 		console.log("Login button clicked");
@@ -27,12 +27,13 @@ export default function LoginPage() {
 
             if(res.data.role == "admin"){
 
-                //window.location.href = "/admin";
-                navigate("/admin")
+                // window.location.href = "/admin"; // Redirect to admin dashboard
+                // return
+                navigate("/admin") // Redirect to admin dashboard without reloading
 
             }else{
 
-                //window.location.href = "/";
+                // window.location.href = "/";
                 navigate("/")
 
             }
@@ -44,7 +45,7 @@ export default function LoginPage() {
 		} catch (err) {
 
             //alert("Login failed! Please check your credentials and try again.");
-            toast.error("Login failed! Please check your credentials and try again.");
+            toast.error("Login failed! Please check your credentials and try again.");  // to show error message in professional way. use toast library.
 
             console.log("Error during login:");
 			console.log(err);
