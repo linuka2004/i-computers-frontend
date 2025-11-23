@@ -23,7 +23,9 @@ export default function LoginPage() {
 
             console.log(res)
 
-			localStorage.setItem("token", res.data.token);
+            localStorage.setItem("token",res.data.token); // Store the token in local storage
+
+            const token = localStorage.getItem("token"); // Retrieve the token from local storage 
 
             if(res.data.role == "admin"){
 
