@@ -14,7 +14,6 @@ export default function AdminPage() {
                     <img src="logo.png" className="h-full"/>
                     <h1 className="text-4xl text-white">ADMIN</h1>
                 </div>
-
                 <div className="w-full h-[400px] text-white text-2xl flex flex-col pl-[20px] pt-[20px]">
                     <Link to="/admin" className="w-full flex items-center h-[50px] gap-[10px]"><LuClipboardList />Orders</Link>
                     <Link to="/admin/products"className="w-full flex items-center h-[50px] gap-[10px]"><FaStore />Products</Link>

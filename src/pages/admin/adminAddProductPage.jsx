@@ -129,6 +129,8 @@ export default function AdminAddProductPage() {
               <option value="Laptops">Laptops</option>
               <option value="Accessories">Accessories</option>
               <option value="Cables">Cables</option>
+              <option value="Mouse">Mouse</option>
+              <option value="Keyboard">Keyboard</option>
               <option value="Others">Others</option>
             </select>
             </div>
@@ -151,8 +153,8 @@ export default function AdminAddProductPage() {
               <option value={false}>No</option>
             </select>
           </div>
-          <Link to="/admin/products" className="w-[49%] h-[50px] bg-gray-300 text-white font-bold rounded-2xl flex justify-center items-center hover:bg-red-900 border-[2px] mt-[20px]">Cancel</Link>
-          <button onClick={addProduct} className="w-[49%] h-[50px] bg-accent text-white rounded-2xl hover:bg-accent/80 mt-[20px]">Add Product</button>
+          <Link to="/admin/products" className="w-[49%] h-[50px] bg-red-900 text-white font-bold rounded-2xl flex justify-center items-center hover:bg-gray-300 border-[2px] mt-[20px]">Cancel</Link>
+          <button onClick={addProduct} className="w-[49%] h-[50px] bg-black text-white rounded-2xl hover:bg-accent/80 mt-[20px]">Add Product</button>
         </div>
       </div>
     </div>
