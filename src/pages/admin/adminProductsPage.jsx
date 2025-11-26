@@ -2,8 +2,8 @@ import { BiPlus } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
 import Loader from "../../components/loader";
+import ProductDeleteButton from "../../components/productDeleteButton";
 
 
 export default function AdminProductsPage() {
@@ -86,23 +86,7 @@ useEffect( ()=> {  // Methanadi wenne useEfffect hook ekak use karala page eka l
                   {item.isAvailable ? "Available" : "Unavailable"}
                 </td>
                 <td className="py-3 px-4 flex gap-2">
-                  <button onClick={
-                    ()=>{
-                      const token = localStorage.getItem("token");
-                      axios.delete(import.meta.env.VITE_BACKEND_URL + "/products/" + item.productID, {
-                        headers:{
-                          authorization: `Bearer ${token}`
-                        }
-                      }).then(
-                        ()=>{
-                          toast.success("Product deleted successfully.");
-                          setLoaded(false); // To reload the products list
-                        }
-                      )
-                    }
-                  } className="w-[100px] bg-red-600 text-white flex justify-center items-center p-2 rounded-lg cursor-pointer hover:bg-red-700 transition-all">
-                    Delete
-                  </button>
+                  <ProductDeleteButton productID = {item.productID} reload={() => setLoaded(false)}  />
                 </td>
               </tr>
             ))}
