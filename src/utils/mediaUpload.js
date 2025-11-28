@@ -10,6 +10,7 @@ export default function uploadFile(file) {
 		const timeStamp = Date.now();
 		const fileName = timeStamp + "_" + file.name;
 		supabase.storage.from("images").upload(fileName, file, {
+			contentType: file.type,
 			cacheControl: "3600",
 			upsert: false,
 		}).then(
@@ -22,3 +23,21 @@ export default function uploadFile(file) {
         })
 	});
 }
+
+// export default function uploadFile(file) {
+// 	return new Promise((resolve, reject) => {
+// 		const timeStamp = Date.now();
+// 		const fileName = timeStamp + "_" + file.name;
+// 		supabase.storage.from("images").upload(fileName, file, {
+// 			cacheControl: "3600",
+// 			upsert: false,
+// 		}).then(
+//             ()=>{
+//                 const publicUrl = supabase.storage.from("images").getPublicUrl(fileName).data.publicUrl;
+//                 resolve(publicUrl);
+//             }
+//         ).catch((error)=>{
+//             reject(error);
+//         })
+// 	});
+// }

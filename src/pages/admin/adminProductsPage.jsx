@@ -1,5 +1,5 @@
 import { BiPlus } from "react-icons/bi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Loader from "../../components/loader";
@@ -11,6 +11,7 @@ export default function AdminProductsPage() {
 const [products, setProducts] = useState([]);
 const [loaded, setLoaded] = useState(false); // To track loading state
 const [error, setError] = useState(null); // To track error state
+const navigate = useNavigate();
 
 useEffect( ()=> {  // Methanadi wenne useEfffect hook ekak use karala page eka load unaama eka call karanna.
   if(!loaded){
@@ -86,6 +87,19 @@ useEffect( ()=> {  // Methanadi wenne useEfffect hook ekak use karala page eka l
                   {item.isAvailable ? "Available" : "Unavailable"}
                 </td>
                 <td className="py-3 px-4 flex gap-2">
+                  {/* <Link 
+                    to="/admin/update-product"
+                    className="px-3 py-1 bg-accent/20 text-grey rounded-md w-[60px] flex justify-center items-center hover:bg-accent/40 transition-all "
+                    state={item}>
+                      Edit
+                    </Link> */}
+                    <button 
+                    onClick={() => {
+                      navigate("/admin/update-product", {state: item});
+                    }}
+                    className="px-3 py-1 bg-accent/20 text-grey rounded-md w-[60px] flex justify-center items-center hover:bg-accent/40 transition-all ">
+                      Edit
+                    </button>
                   <ProductDeleteButton productID = {item.productID} reload={() => setLoaded(false)}  />
                 </td>
               </tr>
