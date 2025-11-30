@@ -83,7 +83,7 @@ export default function ProductCard(props) {
     <div>
       <h1></h1>
       <img src={props.image} />
-      <p>Price LKR: {props.price}</p>
+      <p>{props.price}</p>
 
       <div className="w-[300px] h-[400px]  m-4 shadow-2xl cursor-pointer relative hover:[&_.buttons]:opacity-100 hover:[&_.primary-image]:opacity-0">
         <div className="w-full h-[250px]  relative">
