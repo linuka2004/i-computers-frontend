@@ -21,12 +21,12 @@ export default function LoginPage() {
 				password: password,
 			});
 
-            console.log(res)
+            console.log(res.data.token)
 
             localStorage.setItem("token",res.data.token); // Store the token in local storage
 
-            const token = localStorage.getItem("token"); // Retrieve the token from local storage 
-
+            //const token = localStorage.getItem("token"); // Retrieve the token from local storage 
+            console.log();
             if(res.data.role == "admin"){
 
                 // window.location.href = "/admin"; // Redirect to admin dashboard
