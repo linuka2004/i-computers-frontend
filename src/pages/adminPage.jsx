@@ -10,6 +10,7 @@ import AdminOrdersPage from "./admin/adminOrdersPage";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Loader from "../components/loader";
+import AdminUsersPage from "./admin/adminUserPage";
 
 export default function AdminPage() {
     
@@ -62,8 +63,9 @@ export default function AdminPage() {
                     <Route path="/products"element={<AdminProductsPage />} />
                     <Route path="/add-product"element={<AdminAddProductPage />} />
                     <Route path="/update-product" element={<AdminUpdateProductPage />} />
-                    <Route path="/users"element={<h1>Users</h1>} />
+                    <Route path="/users"element={<AdminUsersPage />} />
                     <Route path="/reviews"element={<h1>Reviews</h1>} />
+                    
 
                 </Routes>
             </div>

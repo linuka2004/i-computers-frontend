@@ -137,7 +137,7 @@ export default function LoginPage() {
                     className="w-full h-[50px] mb-[20px] border rounded-lg border-accent p-10 text-[20px] focus:outline-none focus:ring-2 focus:ring-gold" 
                     />
 
-                    <p className="text-white not-italic w-full text-right mb-[20px]">Forget password  <Link to="/register" className="text-gold italic">Reset it here</Link></p>
+                    <p className="text-white not-italic w-full text-right mb-[20px]">Forget password  <Link to="/forgot-password" className="text-gold italic">Reset it here</Link></p>
                      
                     <button onClick={login} className="w-full h-[50px] bg-accent text-secondary font-bold text-[20px] rounded-lg border-[2px] border-accent hover:bg-transparent hover:text-accent mb-[20px]">Login</button>
 

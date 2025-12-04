@@ -1,49 +1,150 @@
-import { useEffect } from "react";
-import Loader from "../components/loader";
+// import { useEffect } from "react";
+// import Loader from "../components/loader";
+// import axios from "axios";
+// import { useState } from "react";
+// import ProductCard from "../components/productCard";
+
+// export default function ProductPage() {
+
+//   const [products, setProducts] = useState([]); // To store products
+//   const [loaded, setLoaded] = useState(false); // To track loading state
+//   const [query, setQuery] = useState(""); // To store search query
+
+//   useEffect(()=>{
+//     if(!loaded){
+//       axios
+//       .get(import.meta.env.VITE_BACKEND_URL + "/products")
+//       .then(
+//         (response)=>{
+//           console.log(response.data);
+//           setProducts(response.data);
+//           setLoaded(true);   
+//     })};
+//   },[])
+
+//   return (
+//     <div className="w-full h-[calc(100vh-80px)] flex">
+//       {
+//         !loaded ?<Loader/>:
+//         <div className="w-full flex justify-center p-4  flex-row flex-wrap">
+//           <div className="w-full h-[80px] sticky top-0 bg-white flex justify-center items-center mb-4 shadow-md z-10"> 
+//             <input
+//               type="text"
+//               placeholder="Search products..."
+//               className="w-1/2 px-4 py-2 border border-secondary rounded-lg outline-none"
+//               value={query}
+//               onChange={
+//                 async (e)=>{
+//                   if(e.target.value==""){
+//                     setLoaded(false);
+//                     await axios
+//                            .get(import.meta.env.VITE_BACKEND_URL + "/products")
+//                            .then(
+//                              (response)=>{
+//                                console.log(response.data);
+//                                setProducts(response.data);
+//                                setLoaded(true);   
+//                          });
+//                   }else{
+//                     await axios
+//                        .get(import.meta.env.VITE_BACKEND_URL + "/products/search/" + e.target.value)
+//                        .then((respone)=>{
+//                           console.log(respone.data);
+//                           setProducts(respone.data);
+//                        });
+//                        setLoaded(true);
+//                   }
+//                 }
+//               } />
+//           </div>
+//           {
+//             products.map(
+//               (item) =>{
+//                 return (
+//                   // <div>     //this is hard coding the product card, this is very primary thing. Do this in a component and call that component here by passing props.
+//                   // <h1>{item.name}</h1>
+//                   // <img src={item.images[0]} className="w-32 h-32 object-contain" />
+//                   // <p>{item.description}</p>
+//                   // </div>
+
+//                   <ProductCard key={item.productID} product = {item} />
+//                 )                
+//               })
+//           }
+
+//         </div>
+//       }
+
+//     </div>
+//   )
+// }
+
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Loader from "../components/loader";
 import ProductCard from "../components/productCard";
 
 export default function ProductPage() {
+	const [products, setProducts] = useState([]);
+	const [loaded, setLoaded] = useState(false);
 
-  const [products, setProducts] = useState([]); // To store products
-  const [loaded, setLoaded] = useState(false); // To track loading state
+	useEffect(() => {
+		if (!loaded) {
+			axios
+				.get(import.meta.env.VITE_BACKEND_URL + "/products")
+				.then((response) => {
+					console.log(response.data);
+					setProducts(response.data);
+					setLoaded(true);
+				});
+		}
+	}, []);
 
-  useEffect(()=>{
-    if(!loaded){
-      axios
-      .get(import.meta.env.VITE_BACKEND_URL + "/products")
-      .then(
-        (response)=>{
-          console.log(response.data);
-          setProducts(response.data);
-          setLoaded(true);   
-    })};
-  },[])
+	return (
+		<div className="w-full h-[calc(100vh-100px)]">
+			{!loaded ? (
+				<Loader />
+			) : (
+				<div className="w-full flex justify-center p-4 flex-row flex-wrap  ">
+					<div className="w-full h-[100px] sticky top-0 bg-white flex justify-center items-center mb-4 shadow-md z-10">
+						<input
+							type="text"
+							placeholder="Search products..."
+							className="w-1/2 px-4 py-2 border border-secondary/30 rounded-lg outline-none"							
+							onChange={async (e) => {
 
-  return (
-    <div className="w-full h-[calc(100vh-80px)] flex">
-      {
-        !loaded ?<Loader/>:
-        <div className="w-full flex justify-center p-4  flex-row flex-wrap">
-          {
-            products.map(
-              (item) =>{
-                return (
-                  // <div>     //this is hard coding the product card, this is very primary thing. Do this in a component and call that component here by passing props.
-                  // <h1>{item.name}</h1>
-                  // <img src={item.images[0]} className="w-32 h-32 object-contain" />
-                  // <p>{item.description}</p>
-                  // </div>
+								if (e.target.value == "") {
+                                    setLoaded(false);
+									await axios
+										.get(import.meta.env.VITE_BACKEND_URL + "/products")
+										.then((response) => {
+											console.log(response.data);
+											setProducts(response.data);
+											setLoaded(true);
+										});
+                                    setLoaded(true);
+								}else{
+                                    await axios
+                                        .get(
+                                            import.meta.env.VITE_BACKEND_URL +
+                                                "/products/search/" +
+                                                e.target.value
+                                        )
+                                        .then((response) => {
+                                            console.log(response.data);
+                                            setProducts(response.data);
+                                        });
+                                    setLoaded(true);
+                                }
+							}}
+						/>
+					</div>
 
-                  <ProductCard key={item.productID} product = {item} />
-                )                
-              })
-          }
-
-        </div>
-      }
-
-    </div>
-  )
+					{products.map((item) => {
+						return <ProductCard key={item.productID} product={item} />;
+					})}
+				</div>
+			)}
+		</div>
+	);
 }
