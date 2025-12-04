@@ -4,16 +4,42 @@ import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
+import Loader from "../components/loader";
+import { GrGoogle } from "react-icons/gr";
+import { useGoogleLogin } from "@react-oauth/google";
 
 export default function LoginPage() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
     const navigate = useNavigate() // to navigate programmatically
+    const [isLoading , setIsLoading] = useState(false);
+    const googleLogin = useGoogleLogin({
+        onSuccess: (response)=>{
+            //setIsLoading(true);
+            axios.post(import.meta.env.VITE_BACKEND_URL + "/users/google-login",{
+                token : response.access_token,
+            }).then((res)=>{
+                localStorage.setItem("token",res.data.token); // Store the token in local storage
+                if(res.data.role == "admin"){
+                    navigate("/admin") // Redirect to admin dashboard without reloading
+                }else{
+                    navigate("/")
+                }
+                toast.success("Login successful!");
+            }).catch((err)=>{
+                console.log(err);
+            });
+            //setIsLoading
+         },
+        onError: (error)=>{toast.error("Google login failed");},
+        onNonOAuthError: (error)=>{toast.error("Google login failed");}
+    }); // google login hook
 
 	async function login() {
 		console.log("Login button clicked");
 		console.log("Email:", email);
 		console.log("Password:", password);
+        setIsLoading(true);
 
 		try {
 			const res = await axios.post(import.meta.env.VITE_BACKEND_URL + "/users/login", {
@@ -43,6 +69,7 @@ export default function LoginPage() {
             //alert("Login successful! Welcome back.");
 
             toast.success("Login successful! Welcome back.");
+            setIsLoading(false);
 
 		} catch (err) {
 
@@ -51,6 +78,7 @@ export default function LoginPage() {
 
             console.log("Error during login:");
 			console.log(err);
+            setIsLoading(false);
 		}
 	}
 
@@ -111,7 +139,9 @@ export default function LoginPage() {
 
                     <p className="text-white not-italic w-full text-right mb-[20px]">Forget password  <Link to="/register" className="text-gold italic">Reset it here</Link></p>
                      
-                    <button onClick={login} className="w-full h-[50px] bg-accent text-secondary font-bold text-[20px] rounded-lg border-[2px] border-accent hover:bg-transparent hover:text-accent">Login</button>                
+                    <button onClick={login} className="w-full h-[50px] bg-accent text-secondary font-bold text-[20px] rounded-lg border-[2px] border-accent hover:bg-transparent hover:text-accent mb-[20px]">Login</button>
+
+                    <button onClick={googleLogin} className="w-full h-[50px] bg-accent text-secondary font-bold text-[20px] rounded-lg border-[2px] border-accent hover:bg-transparent hover:text-accent">Login With <GrGoogle className="inline ml-2 mb-1"/> </button>                
                     
                     <p className="text-white not-italic">Dont't have an account?  <Link to="/register" className="text-gold italic">Register here</Link></p>
 
@@ -120,6 +150,7 @@ export default function LoginPage() {
                     
                 </div>
             </div>
+            {isLoading && <Loader />}
         </div>
     );
 }

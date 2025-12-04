@@ -80,10 +80,10 @@ export default function ProductCard(props) {
   const product = props.product;
 
   return (
-    <div>
-      <h1></h1>
+    <Link to={"/overview/" + product.productID} >
+      {/* <h1></h1>
       <img src={props.image} />
-      <p>{props.price}</p>
+      <p>{props.price}</p> */}
 
       <div className="w-[300px] h-[400px]  m-4 shadow-2xl cursor-pointer relative hover:[&_.buttons]:opacity-100 hover:[&_.primary-image]:opacity-0">
         <div className="w-full h-[250px]  relative">
@@ -111,9 +111,9 @@ export default function ProductCard(props) {
         </div>
 
         <div className="w-full h-[150px] bottom-0 opacity-0 absolute buttons bg-white flex flex-row gap-4 justify-center items-center transition-opacity duration-300">
-          <Link to={"/overview/" + product.productID} className="border-2 border-accent text-accent hover:bg-accent hover:text-white transition-colors duration-150 h-[50px] w-[150px] flex justify-center items-center">View Details</Link>
+          <button className="border-2 border-accent text-accent hover:bg-accent hover:text-white transition-colors duration-150 h-[50px] w-[150px] flex justify-center items-center cursor-pointer">View Details</button>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

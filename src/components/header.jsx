@@ -19,7 +19,10 @@ export default function Header() {
                 <Link to="/products">Products</Link>
                 <Link to="/about">About</Link>
                 <Link to="/contact">Contact</Link>
-            </div>     
+            </div>  
+            <div className="absolute right-29 top-0 h-full hidden lg:flex items-center">
+                <UserData />
+            </div>   
             <Link to="/cart" className="absolute right-10 top-[20px] translate-y-1/2 text-primary text-2xl">
                 <BiShoppingBag />
             </Link>     
@@ -32,35 +35,31 @@ export default function Header() {
                                 
                         </div>
                         <div className="w-full h-full flex flex-col text-xl text-secondary justify-start items-start  gap-6 mt-10 pl-6">
-                                <a
-                                    className="hover:text-secondary transition"
-                                    href="/"
-                                    onClick={() => setSideBarOpen(false)}
-                                >
-                                    Home
-                                </a>
-                                <a
-                                    className="hover:text-secondary transition"
-                                    href="/products"
-                                    onClick={() => setSideBarOpen(false)}
-                                >
-                                    Products
-                                </a>
-                                <a
-                                    className="hover:text-secondary transition"
-                                    href="/about"
-                                    onClick={() => setSideBarOpen(false)}
-                                >
-                                    About
-                                </a>
-                                <a
-                                    className="hover:text-secondary transition"
-                                    href="/contact"
-                                    onClick={() => setSideBarOpen(false)}
-                                >
-                                    Contact
-                                </a>
-                            </div>
+								<div className=" flex justify-center bg-accent p-2 rounded-full">
+									<UserData />
+								</div>
+								<a
+									className="hover:text-secondary transition"
+									href="/"
+									onClick={() => setSideBarOpen(false)}
+								>
+									Home
+								</a>
+								<a
+									className="hover:text-secondary transition"
+									href="/products"
+									onClick={() => setSideBarOpen(false)}
+								>
+									Products
+								</a>
+								<a
+									className="hover:text-secondary transition"
+									href="/about"
+									onClick={() => setSideBarOpen(false)}
+								>
+									About
+								</a>
+							</div>
                     </div>
                 </div>
                 </div>} 
