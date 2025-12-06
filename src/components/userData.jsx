@@ -56,7 +56,7 @@ export default function UserData(){
                     </select>
                 </div>:
                 <div className="w-[150px] flex flex-row">
-                    <Link to="/login" className="mx-2 px-4 py-2 bg-white text-accent rounded-full">Login</Link> /
+                    <Link to="/login" className="mx-2 px-4 py-2 bg-white text-accent rounded-full">Login</Link>
                     <Link to="/register" className="mx-2 px-4 py-2 bg-white text-accent rounded-full">Register</Link>
                 </div>
             }
