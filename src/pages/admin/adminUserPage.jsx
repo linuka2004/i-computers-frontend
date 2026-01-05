@@ -27,14 +27,15 @@ export default function AdminUsersPage() {
 
 	return (
 		<div
-			className="w-full flex justify-center p-10 relative
-      bg-gradient-to-b from-primary to-white text-secondary"
+			className="w-full min-h-screen flex justify-center px-4 py-6 sm:px-6 md:px-10 relative
+	      bg-gradient-to-b from-primary to-white text-secondary"
 		>
 			{loaded ? (
+				<div className="w-full max-w-7xl overflow-x-auto">
 				<table
-					className="w-full max-w-7xl table-auto border-separate border-spacing-0
-        rounded-2xl overflow-hidden shadow-xl bg-white/70 
-        "
+					className="w-full min-w-[900px] table-auto border-separate border-spacing-0
+	        rounded-2xl overflow-hidden shadow-xl bg-white/70 
+	        "
 				>
 					<thead className="sticky top-0 z-10">
 						<tr className="bg-secondary text-primary/95">
@@ -113,6 +114,7 @@ export default function AdminUsersPage() {
 						})}
 					</tbody>
 				</table>
+				</div>
 			) : (
 				<Loader />
 			)}

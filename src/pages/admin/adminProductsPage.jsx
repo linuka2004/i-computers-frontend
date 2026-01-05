@@ -33,14 +33,16 @@ useEffect( ()=> {  // Methanadi wenne useEfffect hook ekak use karala page eka l
 // )
 
    return (
-    <div className="w-full min-h-screen flex justify-center p-10 bg-primary text-secondary custom-scrollbar">
+    <div className="w-full min-h-screen flex justify-center px-4 py-6 sm:px-6 md:px-10 bg-primary text-secondary custom-scrollbar">
       
-      <div className="w-full max-w-5xl bg-white shadow-xl rounded-2xl p-6 overflow-auto custom-scrollbar">
+      <div className="w-full max-w-5xl bg-white shadow-xl rounded-2xl p-4 sm:p-6 overflow-hidden custom-scrollbar">
         <h1 className="text-3xl font-semibold mb-6 tracking-wide text-secondary">
           All Products
         </h1>
 
-        {loaded?<table className="min-w-full border-collapse">
+        {loaded?
+        <div className="w-full overflow-x-auto">
+        <table className="min-w-[900px] w-full border-collapse">
           <thead>
             <tr className="bg-secondary text-primary text-left text-sm uppercase tracking-wider">
               <th className="py-3 px-4 rounded-l-xl">Image</th>
@@ -105,7 +107,9 @@ useEffect( ()=> {  // Methanadi wenne useEfffect hook ekak use karala page eka l
               </tr>
             ))}
           </tbody>
-        </table>:<Loader />}
+        </table>
+        </div>
+        :<Loader />}
       </div>
 
       {/* Floating Add Button */}
